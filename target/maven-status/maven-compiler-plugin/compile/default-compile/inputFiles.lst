@@ -1,0 +1,9 @@
+/home/rudi/workspace/mongo/src/main/java/com/mongo/health/DataHealthCheck.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/resource/IndexResource.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/DataApplication.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/MongoConfiguration.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/managed/MongoManaged.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/resource/DataResource.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/metier/Fuel.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/metier/Data.java
+/home/rudi/workspace/mongo/src/main/java/com/mongo/DataConfiguration.java
