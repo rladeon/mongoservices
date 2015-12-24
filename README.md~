@@ -1,3 +1,3 @@
 # mongoservices
 
-Le but de ce projet est de proposer un exemple de mise en place d'une architecture de type micro-services en environnement J2EE. Pour ce faire j'ai utilisé Dropwizard qui est une framework permettant en autre d'implémenter des applications autonome et autoportée. Ce qui est particulièrement utile pour la création de micro-services. Dans cette exemple l'application offre les fonctions CRUD nécessaire pour mettre à jour une base de données NoSQL ici une mase MongoDB.  
+The purpose of this project is to provide an example of setting up a micro-services based architecture in J2EE environment. To do this I used Dropwizard which is a framework allowing to implement in other autonomous and self-supporting applications. Which is particularly useful for the creation of micro-services. In this example, the application offers the CRUD functions necessary to update a NoSQL database MongoDB mase here.
