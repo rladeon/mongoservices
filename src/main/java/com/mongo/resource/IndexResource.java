@@ -12,9 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mongo.metier.Data;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 /**
  * @author rudi
  *
@@ -35,17 +33,15 @@ public class IndexResource {
 	@GET
     @Produces(value = MediaType.APPLICATION_JSON)
     @Timed
-    public List<String> index() {
+    public List<?> index() {
     //return Arrays.asList(new Data("Peugeot","106",1997,new Fuel("Super Sans plomb"),0.95,0.80));
 		
 		com.mongodb.DBCursor cursor = collection.find();
-	    List<String> datas = new ArrayList<String>();
+	    List<Object> datas = new ArrayList<Object>();
 	        
 		try {
 		    while (cursor.hasNext()) {
-		       // System.out.println(cursor.next().toJson());
-		    	String data = cursor.next().toString();
-	            datas.add(data);
+		    	datas.add(cursor.next());
 		    }
 		} finally {
 		    cursor.close();
