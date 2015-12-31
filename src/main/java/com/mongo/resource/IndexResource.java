@@ -12,7 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mongodb.DBCollection;
+import com.mongo.service.MongoService;
+import javax.inject.Inject;
 /**
  * @author rudi
  *
@@ -24,10 +25,10 @@ public class IndexResource {
 	/**
 	 * 
 	 */
-	private DBCollection collection;
-	 
-    public IndexResource(DBCollection collection2) {
-        this.collection = collection2;
+	private MongoService data;
+	@Inject
+    public IndexResource(MongoService collection2) {
+        this.data = collection2;
     }
 	
 	@GET
@@ -36,7 +37,7 @@ public class IndexResource {
     public List<?> index() {
     //return Arrays.asList(new Data("Peugeot","106",1997,new Fuel("Super Sans plomb"),0.95,0.80));
 		
-		com.mongodb.DBCursor cursor = collection.find();
+		com.mongodb.DBCursor cursor = data.getCollection().find();
 	    List<Object> datas = new ArrayList<Object>();
 	        
 		try {

@@ -18,6 +18,18 @@
 	<version>0.2.0</version>
 </dependency>
 
+        <dependency>
+    <groupId>com.fiestacabin.dropwizard.guice</groupId>
+    <artifactId>dropwizard-guice</artifactId>
+    <version>0.7.1</version>
+</dependency>
+<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+
 </dependencies>
   <build>
   <plugins>

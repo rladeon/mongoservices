@@ -5,6 +5,7 @@ package com.mongo.managed;
 
 
 
+import com.google.inject.Inject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
@@ -20,7 +21,7 @@ public class MongoManaged implements Managed{
 	 * 
 	 */
 	private Mongo mongo;
-	 
+	 @Inject
     public MongoManaged(MongoClient mongo) {
         this.mongo = mongo;
     }

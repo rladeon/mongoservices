@@ -4,6 +4,7 @@
 package com.mongo.health;
 
 import com.codahale.metrics.health.HealthCheck;
+import com.google.inject.Inject;
 import com.mongodb.MongoClient;
 
 /**
@@ -13,7 +14,7 @@ import com.mongodb.MongoClient;
 public class DataHealthCheck extends HealthCheck{
 
 	private MongoClient mongo;
-	 
+	 @Inject
     public DataHealthCheck(MongoClient mongo) {
         super();
         this.mongo = mongo;

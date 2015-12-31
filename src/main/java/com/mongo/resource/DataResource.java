@@ -6,6 +6,7 @@ package com.mongo.resource;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.mongo.metier.Data;
+import com.mongo.service.MongoService;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -41,11 +43,12 @@ import com.mongodb.DBObject;
 
 public class DataResource {
 	
-	private DBCollection collection;
-	public DataResource(DBCollection c)
-	{
-		this.collection = c;
-	}
+	private MongoService data;
+	@Inject
+	
+	public DataResource(MongoService collection2) {
+        this.data = collection2;
+    }
 		
 	/*@POST
     @Timed
@@ -74,7 +77,7 @@ public class DataResource {
     document.put("id", JsonNodeFactory.instance.textNode(id.toString()));
 
     document.put("mark", the_associated_value);
-    collection.save(document);
+    data.getCollection().save(document);
     return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
         .header("X-Document-ID", id.toString()).build();
 	}
