@@ -4,10 +4,7 @@
 package com.mongo.resource;
 
 import java.io.IOException;
-import java.util.Map;
-
 import javax.inject.Inject;
-import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,10 +23,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.mongo.metier.Data;
 import com.mongo.service.MongoService;
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
 /**
@@ -50,18 +45,6 @@ public class DataResource {
         this.data = collection2;
     }
 		
-	/*@POST
-    @Timed
-    public Response publishNewData(@Context UriInfo uriInfo, Map<String, JsonNode> doc) {
-		ObjectId id = new ObjectId();
-		DBObject document = new BasicDBObject();
-	      document.put("id", JsonNodeFactory.instance.textNode(id.toString()));
-	      document.put("mark", JsonNodeFactory.instance.textNode(doc.get("mark").toString()));
-	      collection.save(document);
-	      return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
-	          .header("X-Document-ID", id.toString()).build();
-    }*/
-	// These steps seems to be SOP
 	@POST
     @Timed
     public Response publishNewData(@Context UriInfo uriInfo,String inputJsonObj) throws JsonParseException, IOException {

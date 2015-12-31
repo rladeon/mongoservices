@@ -8,17 +8,11 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.meltmedia.dropwizard.mongo.MongoBundle;
 
-import com.mongo.health.DataHealthCheck;
-import com.mongo.managed.MongoManaged;
-import com.mongo.resource.DataResource;
-import com.mongo.resource.IndexResource;
 import com.mongo.service.MongoService;
 import com.mongo.service.MongoServiceImpl;
 import com.mongodb.DB;
-import com.mongodb.MongoClient;
 import javax.inject.Inject;
 
-import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
