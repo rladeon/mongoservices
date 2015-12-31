@@ -9,3 +9,8 @@ curl http://localhost:8080/
 ## Add ##
 
 curl -i -X POST -H "Content-Type: application/json" -d '{"mark":"FORD"}' http://localhost:8080/add
+
+## Maven command ##
+### build & start ###
+
+mvn compile exec:java
