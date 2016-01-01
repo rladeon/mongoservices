@@ -23,12 +23,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.mongo.metier.Data;
 import com.mongo.service.MongoService;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import org.bson.Document;
 /**
  * @author rudi
  *
@@ -62,18 +60,13 @@ public class DataResource {
 	    Data d = new Data(mark, model, serie); // Create java object
 	    	    
 	    DBObject document = new BasicDBObject();
-	/*
+	
 	    document.put("id", d.getId());
 	    document.put("mark", d.getMark());
 	    document.put("model", d.getModel());
-	    document.put("model", d.getSerie());
-	    */
-	    Gson gson = new Gson();
-	    String json = gson.toJson(d);
-	    // Parse to bson document and insert
-	    Document doc = Document.parse(json);
-	    document = (DBObject) doc;
-	    data.getCollection().insert(document);
+	    document.put("serie", d.getSerie());
+	    
+	    data.getCollection().save(document);
 	    
 	    return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
 	        .header("X-Document-ID", id.toString()).build();
