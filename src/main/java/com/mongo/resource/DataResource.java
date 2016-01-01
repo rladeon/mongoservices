@@ -61,7 +61,7 @@ public class DataResource {
 	    	    
 	    DBObject document = new BasicDBObject();
 	
-	    document.put("id", d.getId());
+	    document.put("_id", d.getId());
 	    document.put("mark", d.getMark());
 	    document.put("model", d.getModel());
 	    document.put("serie", d.getSerie());
@@ -93,7 +93,7 @@ public class DataResource {
 	    document.put("mark", mark);
 	    document.put("model", model);
 	    document.put("serie", serie);
-	    query.put("id", _id);
+	    query.put("_id", _id);
 	    data.getCollection().update(query, document);
     
 	    return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
@@ -105,7 +105,7 @@ public class DataResource {
     public Response deleteData(@Context UriInfo uriInfo,@PathParam(value = "id") String _id) throws JsonParseException, IOException {
 		String id = UUID.randomUUID().toString();
 	    DBObject o = new BasicDBObject();
-	    o.put("id", _id);
+	    o.put("_id", _id);
 		data.getCollection().remove(o);		
     
 		return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
