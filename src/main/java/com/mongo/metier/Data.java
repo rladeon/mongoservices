@@ -7,31 +7,34 @@ import java.util.UUID;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author rudi
  *
  */
 public class Data {
-	
+	@JsonProperty
 	private String id = UUID.randomUUID().toString();
+	@JsonProperty
 	 @NotBlank
 	    private String mark;
-   /* @NotBlank
+	@JsonProperty
     private String model;
- 
-    @NotBlank
+	@JsonProperty
+    private String serie;
+	@JsonProperty
     private int year;
-    
-    @NotBlank
+	@JsonProperty
     private Fuel fuel_type;
     
-    @NotBlank
+	@JsonProperty
     private Double txCO2;
-    
+	@JsonProperty
     private Double txNox;
-    */
+    
  
-	/*public Data(String _mark, String _model, int _year,Fuel _fuel_type, Double _txCO2,
+	public Data(String _mark, String _model, String serie, int _year,Fuel _fuel_type, Double _txCO2,
 			Double _txNox) {
 		// TODO Auto-generated constructor stub
 		this.model = _model;
@@ -40,7 +43,15 @@ public class Data {
 		this.fuel_type = _fuel_type;
 		this.txCO2 = _txCO2;
 		this.setTxNox(_txNox);
-	} */   
+		this.serie = serie;
+	} 
+	public Data(String _mark, String _model, String serie) {
+		// TODO Auto-generated constructor stub
+		this.model = _model;
+		this.mark = _mark;
+		
+		this.serie = serie;
+	} 
 	public Data(String _mark) {
 		// TODO Auto-generated constructor stub
 	
@@ -57,11 +68,17 @@ public class Data {
     public void setMark(String mark){
 		this.mark = mark;
 	}
-    /*public String getModel() {
+    public String getModel() {
         return model;
     }
     public void setModel(String model){
 		this.model = model;
+	}
+    public String getSerie() {
+        return serie;
+    }
+    public void setSerie(String serie){
+		this.serie = serie;
 	}
     public int getYear() {
         return year;
@@ -89,6 +106,6 @@ public class Data {
 	public void setTxNox(Double _txNox) {
 		this.txNox = _txNox;
 	}
- */
+ 
     
 }

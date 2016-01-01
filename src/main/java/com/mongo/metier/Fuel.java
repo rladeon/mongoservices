@@ -3,6 +3,8 @@
  */
 package com.mongo.metier;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author rudi
  *
@@ -12,6 +14,7 @@ public class Fuel {
 	/**
 	 * 
 	 */
+	@JsonProperty
 	private String name;
 	public Fuel(String _name) {
 		// TODO Auto-generated constructor stub

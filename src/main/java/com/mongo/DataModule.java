@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
+import com.mongo.resource.DataResource;
 import com.mongo.resource.IndexResource;
 import com.mongo.service.MongoService;
 import com.mongo.service.MongoServiceImpl;
@@ -45,7 +46,11 @@ public class DataModule implements Module{
 	IndexResource provideIndexResource() {
 	    return new IndexResource(m);
 	  }
-
+	@Provides
+	@Singleton
+	DataResource provideDataResource() {
+	    return new DataResource(m);
+	  }
 
 	@Override
 	public void configure(Binder arg0) {
