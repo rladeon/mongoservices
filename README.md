@@ -14,7 +14,7 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"mark":"FORD"}' http://
 curl -i -X POST -H "Content-Type: application/json" -d '{"mark":"FORD"}' http://localhost:8080/crud/edit/1
 ## Delete ##
 
-curl -i -X POST -H "Content-Type: application/json" -d http://localhost:8080/crud/delete/1
+curl -i -X DELETE -H "Content-Type: application/json" http://localhost:8080/crud/delete/1
 ## Maven command ##
 ### build & start ###
 
