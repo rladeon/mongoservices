@@ -4,11 +4,14 @@
 package com.mongo.resource;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -111,5 +114,28 @@ public class DataResource {
 		return Response.created(uriInfo.getAbsolutePathBuilder().path(id.toString()).build())
         .header("X-Document-ID", id.toString()).build();
 	}
+	@Path("/query/{id}")	
+	@GET
+    @Timed
+    public List<Object> queryDataId(@Context UriInfo uriInfo,@PathParam(value = "id") String _id) throws JsonParseException, IOException {
+		List<Object> res = new ArrayList<Object>();
+	    DBObject ref = new BasicDBObject();
+	    ref.put("_id", _id);
+	    com.mongodb.DBCursor cursor = data.getCollection().find(ref);		
+
+		try 
+		{
+			while (cursor.hasNext()) 
+			{
+			  	res.add(cursor.next());
+			}
+		}
+		finally 
+		{
+			    cursor.close();
+		}
+		return res;
+	}
+	
 
 }
