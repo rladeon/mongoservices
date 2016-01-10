@@ -4,6 +4,7 @@
 package com.mongo.resource;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -136,6 +137,84 @@ public class DataResource {
 		}
 		return res;
 	}
-	
+	@Path("/querymark/{keyword}")	
+	@GET
+    @Timed
+    public List<Object> queryDataMark(@Context UriInfo uriInfo,@PathParam(value = "keyword") String words) throws JsonParseException, IOException 
+	{
+		List<Object> res = new ArrayList<Object>();
+		BasicDBObject ref = new BasicDBObject();
 
+	    	    ref.put("mark", words);
+
+	    		 com.mongodb.DBCursor cursor = data.getCollection().find(ref);		
+
+	    			try  
+	    			{
+	    				while (cursor.hasNext()) 
+	    				{
+	    				  	res.add(cursor.next());
+	    				}
+	    			}
+	    			finally 
+	    			{
+	    				    cursor.close();
+	    			}
+
+	    return res;
+	}
+	
+	@Path("/querymodel/{keyword}")	
+	@GET
+    @Timed
+    public List<Object> queryDataModel(@Context UriInfo uriInfo,@PathParam(value = "keyword") String words) throws JsonParseException, IOException 
+	{
+		List<Object> res = new ArrayList<Object>();
+		BasicDBObject ref = new BasicDBObject();
+
+	    	    ref.put("model", words);
+
+	    		 com.mongodb.DBCursor cursor = data.getCollection().find(ref);		
+
+	    			try  
+	    			{
+	    				while (cursor.hasNext()) 
+	    				{
+	    				  	res.add(cursor.next());
+	    				}
+	    			}
+	    			finally 
+	    			{
+	    				    cursor.close();
+	    			}
+
+	    return res;
+	}
+	
+	@Path("/queryserie/{keyword}")	
+	@GET
+    @Timed
+    public List<Object> queryDataSerie(@Context UriInfo uriInfo,@PathParam(value = "keyword") String words) throws JsonParseException, IOException 
+	{
+		List<Object> res = new ArrayList<Object>();
+		BasicDBObject ref = new BasicDBObject();
+
+	    	    ref.put("serie", words);
+
+	    		 com.mongodb.DBCursor cursor = data.getCollection().find(ref);		
+
+	    			try  
+	    			{
+	    				while (cursor.hasNext()) 
+	    				{
+	    				  	res.add(cursor.next());
+	    				}
+	    			}
+	    			finally 
+	    			{
+	    				    cursor.close();
+	    			}
+
+	    return res;
+	}
 }
